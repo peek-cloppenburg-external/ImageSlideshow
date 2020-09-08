@@ -58,7 +58,6 @@ Set images by using ```setImageInputs``` method on ```ImageSlideshow``` instance
 | [AlamofireImage](https://github.com/Alamofire/AlamofireImage) | AlamofireSource  | `pod "ImageSlideshow/Alamofire"`  |
 | [AFNetworking](https://github.com/AFNetworking/AFNetworking)  | AFURLSource      | `pod "ImageSlideshow/AFURL"`      |
 | [SDWebImage](https://github.com/rs/SDWebImage)                | SDWebImageSource | `pod "ImageSlideshow/SDWebImage"` |
-| [Kingfisher](https://github.com/onevcat/Kingfisher)           | KingfisherSource | `pod "ImageSlideshow/Kingfisher"` |
 | [Parse](https://github.com/ParsePlatform/Parse-SDK-iOS-OSX)   | ParseSource      | `pod "ImageSlideshow/Parse"`      |
 
 
@@ -67,7 +66,6 @@ slideshow.setImageInputs([
   ImageSource(image: UIImage(named: "myImage"))!,
   ImageSource(image: UIImage(named: "myImage2"))!,
   AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080"),
-  KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080"),
   ParseSource(file: PFFile(name:"image.jpg", data:data))
 ])
 ```

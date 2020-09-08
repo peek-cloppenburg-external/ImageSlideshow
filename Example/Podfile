@@ -6,5 +6,4 @@ target 'ImageSlideshow_Example' do
     pod "ImageSlideshow/AFURL", :path => "../"
     pod "ImageSlideshow/Alamofire", :path => "../"
     pod "ImageSlideshow/SDWebImage", :path => "../"
-    pod "ImageSlideshow/Kingfisher", :path => "../"
 end
