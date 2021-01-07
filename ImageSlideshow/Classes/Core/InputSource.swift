@@ -8,6 +8,11 @@
 
 import UIKit
 
+@objc public enum InputResolution: Int {
+    case low
+    case high
+}
+
 /// A protocol that can be adapted by different Input Source providers
 @objc public protocol InputSource {
     /**
@@ -16,7 +21,7 @@ import UIKit
      - parameter callback: Callback called after image was set to the image view.
      - parameter image: Image that was set to the image view.
      */
-    func load(to imageView: UIImageView, with callback: @escaping (_ image: UIImage?) -> Void)
+    func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (_ image: UIImage?) -> Void)
 
     /**
      Cancel image load on the image view
@@ -48,7 +53,7 @@ open class ImageSource: NSObject, InputSource {
         }
     }
 
-    public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    public func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         imageView.image = image
         callback(image)
     }
@@ -66,7 +71,7 @@ open class BundleImageSource: NSObject, InputSource {
         super.init()
     }
 
-    public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    public func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         let image = UIImage(named: imageString)
         imageView.image = image
         callback(image)
@@ -85,7 +90,7 @@ open class FileImageSource: NSObject, InputSource {
         super.init()
     }
 
-    public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    public func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         let image = UIImage(contentsOfFile: path)
         imageView.image = image
         callback(image)

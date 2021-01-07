@@ -147,7 +147,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
             isLoading = true
             imageReleased = false
             activityIndicator?.show()
-            image.load(to: self.imageView) {[weak self] image in
+            image.load(resolution: self.isZoomed() ? .high : .low, to: self.imageView) {[weak self] image in
                 // set image to nil if there was a release request during the image load
                 if let imageRelease = self?.imageReleased, imageRelease {
                     self?.imageView.image = nil
@@ -192,6 +192,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
             self.setZoomScale(minimumZoomScale, animated: true)
         } else {
             self.setZoomScale(maximumZoomScale, animated: true)
+            self.loadImage()
         }
     }
 
