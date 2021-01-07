@@ -142,7 +142,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     }
 
     /// Request to load Image Source to Image View
-    public func loadImage(_ forced: Bool = false) {
+    public func loadImage(forced: Bool = false) {
         if (self.imageView.image == nil || forced) && !isLoading {
             isLoading = true
             imageReleased = false
@@ -190,7 +190,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     func tapZoom() {
         if isZoomed() {
             self.setZoomScale(minimumZoomScale, animated: true)
-            self.loadImage()
+            self.loadImage(forced: true)
         } else {
             self.setZoomScale(maximumZoomScale, animated: true)
         }
