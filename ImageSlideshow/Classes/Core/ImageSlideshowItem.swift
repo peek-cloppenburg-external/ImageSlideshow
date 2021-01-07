@@ -190,9 +190,9 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     func tapZoom() {
         if isZoomed() {
             self.setZoomScale(minimumZoomScale, animated: true)
-            self.loadImage(forced: true)
         } else {
             self.setZoomScale(maximumZoomScale, animated: true)
+            self.loadImage(forced: true)
         }
     }
 
