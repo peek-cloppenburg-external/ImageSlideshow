@@ -142,8 +142,8 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     }
 
     /// Request to load Image Source to Image View
-    public func loadImage() {
-        if self.imageView.image == nil && !isLoading {
+    public func loadImage(_ forced: Bool = false) {
+        if (self.imageView.image == nil || forced) && !isLoading {
             isLoading = true
             imageReleased = false
             activityIndicator?.show()
@@ -190,9 +190,9 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     func tapZoom() {
         if isZoomed() {
             self.setZoomScale(minimumZoomScale, animated: true)
+            self.loadImage()
         } else {
             self.setZoomScale(maximumZoomScale, animated: true)
-            self.loadImage()
         }
     }
 
