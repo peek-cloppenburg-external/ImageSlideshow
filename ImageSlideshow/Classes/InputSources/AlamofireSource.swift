@@ -44,7 +44,7 @@ public class AlamofireSource: NSObject, InputSource {
         }
     }
 
-    public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    public func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         imageView.af.setImage(withURL: self.url, placeholderImage: placeholder, filter: nil, progress: nil) { [weak self] (response) in
             switch response.result {
                 case .success(let image):

@@ -55,7 +55,7 @@ public class KingfisherSource: NSObject, InputSource {
     ///   - imageView: UIImageView that receives the loaded image
     ///   - callback: Completion callback with an optional image
     @objc
-    public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    public func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         imageView.kf.setImage(with: self.url, placeholder: self.placeholder, options: self.options, progressBlock: nil) { result in
             switch result {
             case .success(let image):

@@ -20,7 +20,7 @@ public class ParseSource: NSObject, InputSource {
         super.init()
     }
 
-    @objc public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
+    @objc public func load(resolution: InputResolution, to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         imageView.image = self.placeholder
 
         self.file.getDataInBackground {(data: Data?, _: Error?) in
