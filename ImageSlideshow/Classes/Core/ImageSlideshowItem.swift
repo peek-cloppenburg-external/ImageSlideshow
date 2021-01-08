@@ -30,7 +30,10 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     open var zoomInInitially = false
 
     /// Maximum zoom scale
-    open var maximumScale: CGFloat = 2.0
+    open var optimalScale: CGFloat = 2.0
+
+    /// Maximum zoom scale
+    open var maximumScale: CGFloat = 4.0
 
     fileprivate var lastFrame = CGRect.zero
     fileprivate var imageReleased = false
@@ -59,10 +62,11 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
         - parameter image: Input Source to load the image
         - parameter zoomEnabled: holds if it should be possible to zoom-in the image
     */
-    init(image: InputSource, zoomEnabled: Bool, activityIndicator: ActivityIndicatorView? = nil, maximumScale: CGFloat = 2.0, onZoom: ((CGFloat) -> Void)? = nil, onDidEndZooming: (() -> Void)? = nil) {
+    init(image: InputSource, zoomEnabled: Bool, activityIndicator: ActivityIndicatorView? = nil, optimalScale: CGFloat = 2.0, maximumScale: CGFloat = 4.0, onZoom: ((CGFloat) -> Void)? = nil, onDidEndZooming: (() -> Void)? = nil) {
         self.zoomEnabled = zoomEnabled
         self.image = image
         self.activityIndicator = activityIndicator
+        self.optimalScale = optimalScale
         self.maximumScale = maximumScale
         self.onZoom = onZoom
         self.onDidEndZooming = onDidEndZooming
@@ -191,7 +195,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
         if isZoomed() {
             self.setZoomScale(minimumZoomScale, animated: true)
         } else {
-            self.setZoomScale(maximumZoomScale, animated: true)
+            self.setZoomScale(self.optimalScale, animated: true)
             self.loadImage(forced: true)
         }
     }

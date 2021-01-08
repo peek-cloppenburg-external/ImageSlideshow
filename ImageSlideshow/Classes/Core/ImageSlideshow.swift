@@ -187,8 +187,15 @@ open class ImageSlideshow: UIView {
         }
     }
 
+    /// Optimal zoom scale
+    open var optiomalScale: CGFloat = 2.0 {
+        didSet {
+            reloadScrollView()
+        }
+    }
+
     /// Maximum zoom scale
-    open var maximumScale: CGFloat = 2.0 {
+    open var maximumScale: CGFloat = 4.0 {
         didSet {
             reloadScrollView()
         }
