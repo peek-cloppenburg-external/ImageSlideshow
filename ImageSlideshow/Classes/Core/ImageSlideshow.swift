@@ -188,7 +188,7 @@ open class ImageSlideshow: UIView {
     }
 
     /// Optimal zoom scale
-    open var optiomalScale: CGFloat = 2.0 {
+    open var optimalScale: CGFloat = 2.0 {
         didSet {
             reloadScrollView()
         }
