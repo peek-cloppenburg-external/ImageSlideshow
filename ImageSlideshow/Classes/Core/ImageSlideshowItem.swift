@@ -249,6 +249,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     
     open func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         self.onDidEndZooming?()
+        self.loadImage(forced: true)
     }
 
     open func viewForZooming(in scrollView: UIScrollView) -> UIView? {
